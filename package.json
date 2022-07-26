@@ -3,5 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://reireias@github.com/reireias/dependabot-test",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "dependabot-test-package": "git+https://reireias@github.com/reireias/dependabot-test-package#v1.0.0"
+  }
 }
