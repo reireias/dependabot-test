@@ -7,8 +7,10 @@ jobs:
   # すべてのChecksが成功したらApproveする
   approve:
     runs-on: ubuntu-latest
-    permisions:
+
+    permissions:
       pull-requests: write
+
     # renovate が作成したジョブのみを対象とする
     if: ${{ github.event.check_suite.conclusion == 'success' && contains(github.event.check_suite.head_sha, 'renovate/') }}
     steps:
