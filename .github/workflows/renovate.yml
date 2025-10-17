@@ -9,8 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     permision:
       pull-requests: write
-    if: ${{ github.event.check_suite.conclusion == 'success' }}
+    # renovate が作成したジョブのみを対象とする
+    if: ${{ github.event.check_suite.conclusion == 'success' && contains(github.event.check_suite.head_sha, 'renovate/') }}
     steps:
       - name: Approve Renovate PR
+        if: ${{ contains(github.event.check_suite.pull_requests[0].head.ref, 'renovate/') }}
         run: |
           gh pr review ${{ github.event.check_suite.pull_requests[0].number }} --approve
