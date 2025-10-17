@@ -1,0 +1,12 @@
+name: plan
+
+on:
+  pull_request:
+
+jobs:
+  terraform:
+    name: Terraform Plan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Terraform Plan
+        run: echo "dummy step"

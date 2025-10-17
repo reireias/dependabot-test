@@ -1,0 +1,16 @@
+name: renovate
+on:
+  check_suite:
+    types: [completed]
+
+jobs:
+  # すべてのChecksが成功したらApproveする
+  approve:
+    runs-on: ubuntu-latest
+    permision:
+      pull-requests: write
+    if: ${{ github.event.check_suite.conclusion == 'success' }}
+    steps:
+      - name: Approve Renovate PR
+        run: |
+          gh pr review ${{ github.event.check_suite.pull_requests[0].number }} --approve
